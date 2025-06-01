@@ -1,0 +1,281 @@
+---
+
+---
+
+<header
+  id="main-header"
+  class="hidden xl:block fixed top-0 left-0 right-0 z-50 bg-gray-950 shadow-lg transition-all duration-300"
+>
+  <nav class="container mx-auto px-4">
+    <div
+      class="flex items-center justify-between h-[150px] transition-all duration-300"
+      id="nav-container"
+    >
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="block">
+          <img
+            src="https://nnovadesigns.com/img/Logo_Nnova_white_very-small.webp"
+            alt="Nnova Designs Logo"
+            class="h-[100px] w-auto transition-all duration-300"
+            id="header-logo"
+            loading="lazy"
+            height="80"
+            width="auto"
+          />
+        </a>
+      </div>
+
+      <!--TODO HACER MENU -->
+      <ul class="flex space-x-6 text-white text-md font-semibold items-center">
+        <li>
+          <a
+            href="#"
+            class="px-4 py-4 hover:text-primary-500 transition-colors duration-200"
+          >
+            Inicio
+          </a>
+        </li>
+
+        <li class="relative dropdown">
+          <a
+            href="#"
+            class="px-4 py-4 hover:text-primary-500 hover:[&>svg]:rotate-0 transition-colors duration-200 flex items-center"
+          >
+            Servicios
+            <svg
+              class="w-4 h-4 ml-1 -rotate-90 transition-transform duration-200"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+
+          <ul
+            class="dropdown-menu absolute -left-36 top-full w-80 bg-gray-800 text-white [&>li>a:hover]:text-primary-500 rounded-lg shadow-xl border border-gray-700"
+          >
+            <li class="relative dropdown-submenu">
+              <a
+                href="#"
+                class="px-4 py-3 hover:bg-gray-700 hover:text-primary-500 transition-colors duration-200 flex items-center justify-between"
+              >
+                Tabiques y cielorrasos
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+
+              <ul
+                class="submenu absolute left-full top-0 w-48 bg-gray-700 rounded-lg shadow-xl border border-gray-600"
+              >
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-3 hover:bg-gray-600 hover:text-primary-500 transition-colors duration-200"
+                  >
+                    Tabiques
+                  </a>
+                </li>
+                <li class="relative dropdown-submenu-level2">
+                  <a
+                    href="#"
+                    class="px-4 py-3 hover:bg-gray-600 hover:text-primary-500 transition-colors duration-200 flex items-center justify-between"
+                  >
+                    Cielorrasos
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+
+                  <ul
+                    class="submenu-level2 absolute left-full top-0 w-40 bg-gray-600 rounded-lg shadow-xl border border-gray-500"
+                  >
+                    <li>
+                      <a
+                        href="#"
+                        class="block px-4 py-3 hover:bg-gray-500 hover:text-primary-500 transition-colors duration-200"
+                      >
+                        Continuo
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="block px-4 py-3 hover:bg-gray-500 hover:text-primary-500 transition-colors duration-200"
+                      >
+                        Registrable
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="block px-4 py-3 hover:bg-gray-500 hover:text-primary-500 transition-colors duration-200 rounded-b-lg"
+                      >
+                        Decorativos
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="relative dropdown-submenu">
+              <a
+                href="#"
+                class="px-4 py-3 hover:bg-gray-700 hover:text-primary-500 transition-colors duration-200 flex items-center justify-between"
+              >
+                Aislamientos
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+
+              <ul
+                class="submenu absolute left-full top-0 w-52 bg-gray-700 rounded-lg shadow-xl border border-gray-600 [&>li>a:hover]:text-primary-500"
+              >
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-3 hover:bg-gray-600 hover:text-primary-500 transition-colors duration-200"
+                  >
+                    Aislamiento acústico
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-3 hover:bg-gray-600 hover:text-primary-500 transition-colors duration-200 rounded-b-lg"
+                  >
+                    Aislamiento térmico
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <a
+                href="#"
+                class="block px-4 py-3 hover:bg-gray-700 hover:text-primary-500 transition-colors duration-200"
+              >
+                Protección pasiva contra el fuego
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#"
+                class="block px-4 py-3 hover:bg-gray-700 hover:text-primary-500 transition-colors duration-200 rounded-b-lg"
+              >
+                Iluminación indirecta
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a
+            href="#"
+            class="px-4 py-4 hover:text-primary-500 transition-colors duration-200"
+          >
+            Quienes somos
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="px-4 py-4 hover:text-primary-500 transition-colors duration-200"
+          >
+            Portfolio
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="px-4 py-4 hover:text-primary-500 transition-colors duration-200"
+          >
+            Contacto
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+  <style>
+    /* Menú principal */
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu {
+      display: none;
+    }
+
+    /* Primer nivel de submenú */
+    .dropdown-submenu:hover > .submenu {
+      display: block;
+    }
+
+    .submenu {
+      display: none;
+    }
+
+    /* Segundo nivel de submenú (para Cielorrasos) */
+    .dropdown-submenu-level2:hover > .submenu-level2 {
+      display: block;
+    }
+
+    .submenu-level2 {
+      display: none;
+    }
+
+    /* Animaciones */
+    .dropdown-menu,
+    .submenu,
+    .submenu-level2 {
+      animation: fadeIn 0.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>

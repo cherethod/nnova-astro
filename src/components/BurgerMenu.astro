@@ -1,0 +1,89 @@
+<header class="w-dvw h-dvh absolute top-0 left-0 z-50 xl:hidden">
+  <button
+  id="hamburger-btn"
+  class="absolute z-10 top-4 right-6 xl:hidden text-black p-2 rounded-md hover:bg-gray-800 hover:text-white mr-4 transition-colors duration-200 w-10 h-10"
+  aria-label="Abrir menú"
+>
+  <svg
+    id="hamburger-icon"
+    class="w-6 h-6"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M4 6h16M4 12h16M4 18h16"></path>
+  </svg>
+  <svg
+    id="close-icon"
+    class="w-6 h-6 hidden"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M6 18L18 6M6 6l12 12"></path>
+  </svg>
+</button>
+  <div id="hamburger-container" class="py-24 h-full w-0 [&.active]:w-full [&.active>nav]:flex flex flex-col items-center justify-between bg-black transition-all duration-300 ease-in-out">
+    <a href="/" class="flex items-center">
+      <img
+        src="https://nnovadesigns.com/img/Logo_Nnova_white_very-small.webp"
+        alt="Logo"
+        class="h-20 w-auto"
+        id="header-logo"
+        loading="lazy"
+        height="80"
+        width="auto"
+      />
+    </a>
+
+    <nav class="hidden w-2/4 flex-col justify-center mx-auto space-x-8 text-white/80 font-semibold h-full [&>a]:text-center [&>a]:m-0 [&>a]:text-4xl gap-4">
+      <a href="/" class="hover:text-primary-500 transition-colors duration-200">Inicio</a>
+      <a href="#" class="hover:text-primary-500 transition-colors duration-200">Servicios</a>
+      <a href="#" class="hover:text-primary-500 transition-colors duration-200">Quienes somos</a>
+      <a href="#" class="hover:text-primary-500 transition-colors duration-200">Portfolio</a>
+      <a href="#" class="hover:text-primary-500 transition-colors duration-200">Contacto</a>
+    </nav>
+  </div>
+</header>
+<style>
+    nav > a {
+        opacity: 0;
+    }
+
+    #hamburger-container.active nav > a {
+        animation: fadeIn 0.3s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const hamburgerIcon = document.getElementById("hamburger-icon");
+    const closeIcon = document.getElementById("close-icon");
+    const hamburgerContainer = document.getElementById("hamburger-container");
+
+    hamburgerBtn?.addEventListener("click", () => {
+      hamburgerContainer?.classList.toggle("active");
+      hamburgerIcon?.classList.toggle("hidden");
+      closeIcon?.classList.toggle("hidden");
+      closeIcon?.classList.toggle("text-white");
+    });
+  });
+</script>
