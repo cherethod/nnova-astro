@@ -3,13 +3,15 @@ import { HeroItem } from "./HeroItem";
 import { HeroIndicator } from "./HeroIndicator";
 
 export function HeroComponent({ slides, autoplayInterval }) {
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const [autoplay, setAutoplay] = useState(autoplayInterval || 5000);
-    const [isPaused, setIsPaused] = useState(false);
-    const [isVisible, setIsVisible] = useState(true);
-    const startTouchPosition = useRef(null);
-    const slidesCount = slides.length;
-
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const sliderRef = useRef(null);
+  const startTouchPosition = useRef(null);
+  const autoplay = autoplayInterval || 5000;
+  const slidesCount = slides.length;
+  const minSwipeDistance = 50;
+  
   function handleCurrentSlideChange(index) {
     setCurrentSlide(index);
   }
@@ -24,14 +26,16 @@ export function HeroComponent({ slides, autoplayInterval }) {
   }
   function handleTouchEnd(event) {
     if (!startTouchPosition) return;
+
     const endTouchPosition = event.changedTouches[0].clientX;
     const touchDifference = startTouchPosition.current - endTouchPosition;
-    if (touchDifference > 50) {
-        setCurrentSlide((prev) => (prev + 1) % slidesCount);
-        }
-    else if (touchDifference < -50) {
-        setCurrentSlide((prev) => (prev - 1 + slidesCount) % slidesCount);
+
+    if (touchDifference > minSwipeDistance) {
+      setCurrentSlide((prev) => (prev + 1) % slidesCount);
+    } else if (touchDifference < -minSwipeDistance) {
+      setCurrentSlide((prev) => (prev - 1 + slidesCount) % slidesCount);
     }
+
     handlePauseChange(false);
     startTouchPosition.current = null;
   }
@@ -41,41 +45,43 @@ export function HeroComponent({ slides, autoplayInterval }) {
     if (isPaused) return;
 
     const handleAutoplay = () => {
-        setCurrentSlide((prev) => (prev + 1) % slidesCount);
+      setCurrentSlide((prev) => (prev + 1) % slidesCount);
     };
+
     const interval = setInterval(handleAutoplay, autoplay);
+
     return () => clearInterval(interval);
   }, [isPaused, isVisible]);
 
-  
   useEffect(() => {
-    if (!isVisible) return;
-    window.addEventListener("touchstart", handleTouchStart);
-    window.addEventListener("touchend", handleTouchEnd);
+    const slider = sliderRef.current;
+
+    if (!slider) return;
+
+    slider.addEventListener("touchstart", handleTouchStart);
+    slider.addEventListener("touchend", handleTouchEnd);
+
     return () => {
-        window.removeEventListener("touchstart", handleTouchStart);
-        window.removeEventListener("touchend", handleTouchEnd);
-    }
-  }, [isVisible]);
-  
-  useEffect (() => {
+      slider.removeEventListener("touchstart", handleTouchStart);
+      slider.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
-        
       if (window.scrollY >= window.innerHeight) {
-        console.log("Setting to false");
-        
         setIsVisible(false);
       } else {
-        console.log("Setting to true");
         setIsVisible(true);
       }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  },[])
+  }, []);
 
   return (
     <section
+      ref={sliderRef}
       id="hero-slider"
       class="relative h-dvh xl:h-[calc(100vh-150px)] overflow-hidden xl:mt-[150px] transition-all duration-300"
     >
