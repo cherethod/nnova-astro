@@ -25,7 +25,7 @@ export function HeroComponent({ slides, autoplayInterval }) {
     startTouchPosition.current = event.touches[0].clientX;
   }
   function handleTouchEnd(event) {
-    if (!startTouchPosition) return;
+    if (!startTouchPosition.current) return;
 
     const endTouchPosition = event.changedTouches[0].clientX;
     const touchDifference = startTouchPosition.current - endTouchPosition;
@@ -41,8 +41,7 @@ export function HeroComponent({ slides, autoplayInterval }) {
   }
 
   useEffect(() => {
-    if (!isVisible) return;
-    if (isPaused) return;
+    if (!isVisible || isPaused) return;
 
     const handleAutoplay = () => {
       setCurrentSlide((prev) => (prev + 1) % slidesCount);
@@ -56,7 +55,7 @@ export function HeroComponent({ slides, autoplayInterval }) {
   useEffect(() => {
     const slider = sliderRef.current;
 
-    if (!slider) return;
+    if (!isVisible || !slider) return;
 
     slider.addEventListener("touchstart", handleTouchStart);
     slider.addEventListener("touchend", handleTouchEnd);
@@ -68,15 +67,23 @@ export function HeroComponent({ slides, autoplayInterval }) {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY >= window.innerHeight) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        root: null,
+        threshold: 0.1,
+      }
+    );
+    if (sliderRef.current) {
+      observer.observe(sliderRef.current);
+    }
+    return () => {
+      if (sliderRef.current) {
+        observer.unobserve(sliderRef.current);
       }
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -84,6 +91,7 @@ export function HeroComponent({ slides, autoplayInterval }) {
       ref={sliderRef}
       id="hero-slider"
       class="relative h-dvh xl:h-[calc(100vh-150px)] overflow-hidden xl:mt-[150px] transition-all duration-300"
+      style={{ touchAction: 'pan-y' }} 
     >
       <div class="relative h-full w-full">
         {slides.map((slide, index) => (
