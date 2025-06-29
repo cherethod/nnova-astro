@@ -1,0 +1,108 @@
+---
+import ServicesComponent from './ServicesComponent';
+
+// Props del componente
+export interface Props {
+  services?: Array<{
+    title: string;
+    description: string;
+    image: string;
+    buttonText?: string;
+    buttonLink?: string;
+  }>;
+}
+
+const { 
+  services = [
+    {
+      title: "Instalación de Drywall",
+      description: "Transformamos espacios con instalaciones de drywall de alta calidad, ofreciendo soluciones versátiles y duraderas para cualquier proyecto de construcción o remodelación.",
+      image: "https://nnovadesigns.com/img/services/servicios-iluminacion-indirecta-drywall.webp",
+      buttonText: "Ver Servicio",
+      buttonLink: "#servicio-drywall"
+    },
+    {
+      title: "Aislamiento Acústico",
+      description: "Creamos ambientes más confortables y silenciosos con nuestras soluciones de aislamiento acústico, perfectas para oficinas, estudios y espacios residenciales.",
+      image: "https://nnovadesigns.com/img/services/servicios-iluminacion-indirecta-drywall.webp",
+      buttonText: "Conocer Más",
+      buttonLink: "#servicio-acustico"
+    },
+    {
+      title: "Diseño de Interiores",
+      description: "Diseñamos espacios únicos que reflejan tu personalidad y necesidades, combinando funcionalidad y estética para crear ambientes excepcionales.",
+      image: "https://nnovadesigns.com/img/services/servicios-iluminacion-indirecta-drywall.webp",
+      buttonText: "Explorar",
+      buttonLink: "#servicio-diseno"
+    }
+  ]
+} = Astro.props;
+---
+
+<ServicesComponent services={services} client:load />
+
+<style>
+  .service-item {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .service-item.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .service-image {
+    transform: scale(1.1);
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .service-item.animate-in .service-image {
+    transform: scale(1);
+  }
+
+  .service-content {
+    transform: translateX(60px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+  }
+
+  .service-item.animate-in .service-content {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  /* Para elementos que van por la izquierda */
+  .service-item:nth-child(even) .service-content {
+    transform: translateX(-60px);
+  }
+
+  .service-item:nth-child(even).animate-in .service-content {
+    transform: translateX(0);
+  }
+
+  /* Parallax effect */
+  .service-image-container {
+    transition: transform 0.1s linear;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .service-content {
+      transform: translateY(30px);
+    }
+    
+    .service-item.animate-in .service-content {
+      transform: translateY(0);
+    }
+    
+    .service-item:nth-child(even) .service-content {
+      transform: translateY(30px);
+    }
+    
+    .service-item:nth-child(even).animate-in .service-content {
+      transform: translateY(0);
+    }
+  }
+</style>
