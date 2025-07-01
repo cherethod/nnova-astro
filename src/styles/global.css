@@ -10,8 +10,19 @@
   --color-primary-600: oklch(0.5678 0.1964 10.37);
   --color-primary-700: oklch(0.4981 0.1782 11.49);
   --color-primary-800: oklch(0.4422 0.1541 10.16);
-  --color-primary-900: oklch(0.3447 0.1361 359.4);
+  --color-primary-900: oklch(0.3378 0.1316 358.03);
   --color-primary-950: oklch(0.2677 0.1057 358.64);
+  --color-dark-950: oklch(0.2178 0 0);
+  --color-dark-900: oklch(0.2471 0.007 0);
+  --color-dark-800: oklch(0.2902 0.014 0);
+  --color-dark-700: oklch(0.3333 0.021 0);
+  --color-dark-600: oklch(0.3765 0.028 0);
+  --color-dark-500: oklch(0.4196 0.035 0);
+  --color-dark-400: oklch(0.4627 0.042 0);
+  --color-dark-300: oklch(0.5059 0.049 0);
+  --color-dark-200: oklch(0.549 0.056 0);
+  --color-dark-100: oklch(0.5922 0.063 0);
+  --color-dark-50: oklch(0.6353 0.07 0);     
 }
 
 .service-item {
