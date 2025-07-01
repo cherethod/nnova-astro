@@ -1,27 +1,13 @@
 ---
 import HeroSlider from '../components/Hero/HeroSlider.astro';
-import Header from '../components/Header.astro';
+import Header from '../components/Header/Header.astro';
 import ServicesParallax from '../components/Services/ServicesParallax.astro';
 import Layout from '../layouts/Layout.astro';
+import Principles from '../components/Principles.astro';
+import { FaqsComponent } from '../components/FaqsComponents';
+import FooterComponent from '../components/FooterComponent.astro';
 
-// Ejemplo de slides personalizados
-const customSlides = [
-  {
-    title: "Slide Personalizado 1",
-    subtitle: "Este es el primer slide con fondo personalizado",
-    backgroundColor: "bg-gradient-to-br from-indigo-600 to-purple-800"
-  },
-  {
-    title: "Slide Personalizado 2",
-    subtitle: "Segundo slide con otro gradiente",
-    backgroundColor: "bg-gradient-to-br from-emerald-600 to-cyan-700"
-  },
-  {
-    title: "Slide Personalizado 3",
-    subtitle: "Tercer slide completando el ciclo",
-    backgroundColor: "bg-gradient-to-br from-rose-600 to-pink-700"
-  }
-];
+
 ---
 
 <Layout title="Inicio" description="Nnova Designs - Profesionales con Durlock en Paraguay" keywords="Durlock Paraguay, Instalación Durlock, Empresa trabajos drywall, Profesionales en Durlock">
@@ -44,4 +30,7 @@ const customSlides = [
 
 	<!-- Services Parallax Section -->
 	<ServicesParallax />
+	<Principles />
+	<FaqsComponent client:load/>
+	<FooterComponent />
 </Layout>
